@@ -15,7 +15,10 @@ public class LibraryApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        SetUp setup = new SetUp();
+        setup.setBooks();
+        //   setup.printBooks();// Works
+
     }
-    
+
 }
