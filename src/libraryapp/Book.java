@@ -38,6 +38,11 @@ public class Book implements Serializable {
         this.yearPublished = yearPublished;
     }
 
+    public Book() {
+        isFilled = true;
+        isbn = count.incrementAndGet();
+    }
+
     //Getters and Setters
     public String getTitle() {
         return title;
@@ -71,9 +76,36 @@ public class Book implements Serializable {
         this.yearPublished = yearPublished;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" + "isbn=" + isbn + ", title=" + title + ", author=" + author + ", genre=" + genre + ", yearPublished=" + yearPublished + ", isFilled=" + isFilled + '}';
+    public static AtomicInteger getCount() {
+        return count;
+    }
+
+    public int getIsbn() {
+        return isbn;
+    }
+
+    public boolean isIsFilled() {
+        return isFilled;
+    }
+
+    public String toStringIsbn() {
+        return "Book{" + ", isbn= " + isbn
+                + ", title=" + title
+                + ", author=" + author
+                + ", genre=" + genre
+                + ", yearPublished=" + yearPublished
+                + ", isFilled=" + isFilled
+                + '}';
+    }
+
+    public String toStringYearPubli() {
+        return "Book{" + "yearPublished= " + yearPublished
+                + ", isbn=" + isbn
+                + ", title=" + title
+                + ", author=" + author
+                + ", genre=" + genre
+                + ", isFilled="
+                + isFilled + '}';
     }
 
 }

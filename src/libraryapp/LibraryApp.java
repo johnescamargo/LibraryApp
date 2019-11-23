@@ -16,8 +16,12 @@ public class LibraryApp {
      */
     public static void main(String[] args) {
         SetUp setup = new SetUp();
+        Logic logic = new Logic();
         setup.setBooks();
-        //   setup.printBooks();// Works
+        setup.printBooks();// Works
+        logic.bubbleSort(setup.books);
+        
+        
 
     }
 
