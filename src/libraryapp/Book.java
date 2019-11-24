@@ -107,5 +107,25 @@ public class Book implements Serializable {
                 + ", isFilled="
                 + isFilled + '}';
     }
+    
+    public String toStringGenre() {
+        return "Book{"  + "Genre= " + genre
+                + ", isbn=" + isbn
+                + ", title=" + title
+                + ", author=" + author
+                + ", yearPublished= " + yearPublished
+                + ", isFilled="
+                + isFilled + '}';
+    }
 
+     public String toStringTitle() {
+        return "Book{"  + "Title= " + title
+                + ", isbn=" + isbn
+                + ", author=" + author
+                + ", genre=" + genre
+                + ", yearPublished= " + yearPublished
+                + ", isFilled="
+                + isFilled + '}';
+    }
+    
 }

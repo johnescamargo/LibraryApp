@@ -20,11 +20,11 @@ public class SetUp {
         "John Grisham", "Danielle Steel", "Dean Koontz", "Agatha Christie",
         "Lee Child", "Nora Roberts", "Dan Brown"};
     String[] title = {"Fifty Shades of ", "A day in ", "Lady in ", "Run away from ",
-        "Master of ", "Crazy stuff of", "Shadow of your ", "Killing in the name of ",
+        "Master of ", "Crazy stuff of ", "Shadow of your ", "Killing in the name of ",
         "Get out of ", "What we think of ", "Call it ", "Pick a fight ", "Alice in ",
-        "Ten tents in ", "Diary of a ", "Pluto in ", "Burn and wear a "};
+        "Ten tents in ", "Diary of ", "Pluto in ", "Burn and wear "};
     String[] title1 = {"brown", "grey", "paradise", "hell", "Puppet", "House",
-        "Heaven", "Hill", "mountains", "Valleys", "shadow", "Kerry", "Dublin", "Cork",
+        "Heaven", "Hill", "mountain", "valley", "shadow", "Kerry", "Dublin", "Cork",
         "Ireland", "France", "Mianos", "New York", "London"};
     String[] genre = {"Romance", "Drama", "Adventure", "Romance Hot", "Serial Killer",
         "Thriller", "Sci-fi", "Action", "Crime", "Suspense", "Fairytale", "Fantasy",
@@ -46,7 +46,6 @@ public class SetUp {
             books[i].setGenre(genre[ranGen.nextInt(genre.length)]);
             books[i].setYearPublished(yearPublished[ranGen.nextInt(yearPublished.length)]);
 
-            
         }
     }
 
@@ -55,7 +54,7 @@ public class SetUp {
      */
     public void printBooks() {
         for (int i = 0; i < books.length; i++) {
-            System.out.println(books[i].toStringIsbn());
+            System.out.println(books[i].toStringTitle());
 
         }
 
