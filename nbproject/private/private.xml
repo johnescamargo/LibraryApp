@@ -5,17 +5,12 @@
             <url>src/libraryapp/Logic.java</url>
             <bookmark id="1">
                 <name/>
-                <line>14</line>
+                <line>13</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Johnes/Documents/NetBeansProjects/LibraryApp/src/libraryapp/SetUp.java</file>
-            <file>file:/C:/Users/Johnes/Documents/NetBeansProjects/LibraryApp/src/libraryapp/LibraryApp.java</file>
-            <file>file:/C:/Users/Johnes/Documents/NetBeansProjects/LibraryApp/src/libraryapp/Logic.java</file>
-            <file>file:/C:/Users/Johnes/Documents/NetBeansProjects/LibraryApp/src/libraryapp/Book.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

@@ -11,15 +11,13 @@ package libraryapp;
  */
 public class Logic {
 
-//    Book[] temp_array = new Book[600];
     /**
-     *
-     * Method Bubble Sort. To organize the numbers in an array Bubble Sort Year
-     * Published
+     * Method Bubble Sort that organizes array by Year (Year Published)
      *
      * @param books
+     * @param author
      */
-    public void bubbleSort(Book books[]) {
+    public void bubbleSort(Book books[], String author) {
         int n = books.length;
         Book temp = new Book();
         System.out.println("Bubble Sort Year Published" + "\n");
@@ -35,23 +33,54 @@ public class Logic {
                 }
             }
         }
-        for (int j = 0; j < books.length; j++) {
-            System.out.println(books[j].toStringYearPubli());
+
+        // Display all books by One author only
+        if (author != null) {
+            System.out.println("Books by Author:");
+            for (int i = 0; i < books.length; i++) {
+                if (books[i].getAuthor().equals(author)) {
+                    System.out.println(books[i].toStringYearPubli());
+                }
+            }
+
+        } else {
+            // Display all books by author 
+            for (Book book : books) {
+                System.out.println(book.toStringYearPubli());
+            }
         }
     }
 
     /**
-     * Genre
+     * This method calls the Quick Sort method
      *
-     * @param books
+     * @param books - receives an array of books
+     * @param author - receives a string author
      */
-    public void sort(Book[] books) {
+    public void sort(Book[] books, String author) {
         int len = books.length;
-        quickSort(0, len - 1, books);
+        quickSort(0, len - 1, books);//call method and send params 
+
+        // Display all books by genre and from One author only
+        if (author != null) {
+            System.out.println("Books by Author:");
+            for (int i = 0; i < books.length; i++) {
+                if (books[i].getAuthor().equals(author)) {
+                    System.out.println(books[i].toStringGenre());
+                }
+            }
+
+        } else {
+            // Display all books by genre
+            for (Book book : books) {
+                System.out.println(book.toStringGenre());
+            }
+        }
+
     }
 
     /**
-     * Genre
+     * This method sorts array of book by Genre
      *
      * @param low_index
      * @param high_index
@@ -95,11 +124,12 @@ public class Logic {
     }
 
     /**
-     * It works
+     * This method sorts array of books by ID (ISBN)
      *
-     * @param books
+     * @param books - receives array of books
+     * @param author - receives String author
      */
-    public void insertionSort(Book[] books) {
+    public void insertionSort(Book[] books, String author) {
         Book key = new Book();
         int n = books.length;
         for (int j = 1; j < n; j++) {
@@ -111,14 +141,31 @@ public class Logic {
             }
             books[i + 1] = key;
         }
+
+        // Display all books by ID and from One author only
+        if (author != null) {
+            System.out.println("Books by Author:");
+            for (int i = 0; i < books.length; i++) {
+                if (books[i].getAuthor().equals(author)) {
+                    System.out.println(books[i].toStringIsbn());
+                }
+            }
+
+        } else {
+            // Display all books by ID 
+            for (Book book : books) {
+                System.out.println(book.toStringIsbn());
+            }
+        }
     }
 
     /**
-     * Title ------------------- ????????????
+     * This method sorts array of books by Title Selection Sort
      *
-     * @param books
+     * @param books - receives array of books
+     * @param author - receives a string
      */
-    public void selectionSort(Book[] books) {
+    public void selectionSort(Book[] books, String author) {
         Book temp = new Book();
         for (int i = 0; i < books.length - 1; i++) {
             int index = i;
@@ -131,6 +178,130 @@ public class Logic {
             books[index] = books[i];
             books[i] = temp;
         }
+
+        // Display all books by Title and from One author only
+        if (author != null) {
+            System.out.println("Books by Author:");
+            for (int i = 0; i < books.length; i++) {
+                if (books[i].getAuthor().equals(author)) {
+                    System.out.println(books[i].toStringTitle());
+                }
+            }
+
+        } else {
+            // Display all books by Title
+            for (Book book : books) {
+                System.out.println(book.toStringTitle());
+            }
+        }
+    }
+
+    /**
+     * This method search for author from array of author The array of authors
+     * is already sorted
+     *
+     * @param authors - receives array of authors
+     * @param target - receives name of author
+     * @return a String - author's name
+     */
+    public String binarySearch(String[] authors, String target) {
+        int first = 0;
+        int last = authors.length - 1;
+        int mid = (first + last) / 2;
+        int count = 0;
+        while (first <= last) {
+
+            count++;    // allows us to count cycles
+            if (authors[mid].compareTo(target) < 0) {
+                first = mid + 1;
+            } else if (authors[mid].compareTo(target) == 0) {
+                System.out.println(target + " - Search " + target + " found at index: " + mid);
+                System.out.println("search cycle count = " + count + "\n");
+                return authors[mid];  // will break out of while loop
+            } else {
+                last = mid - 1;
+            }
+            mid = (first + last) / 2;
+
+        }
+        if (first > last) {
+            System.out.println("Search " + target + " not found!");
+        }
+        System.out.println("search cycle count = " + count + "\n");
+        return null;
+
+    } // end binarySearch
+
+    /**
+     * This method searches for a String in the array of books Big O notation
+     *
+     * @param books - receives an array of objects Book
+     * @param target - receives an a string to be found in the array
+     * @param author - receives an string (author) to check if the book title
+     * belongs to the author
+     * @return return a String
+     */
+    public String binarySearchTitle(Book[] books, String target, String author) {
+
+        selectionSortTitle(books, null);// sort array before searches for target
+
+        Book a = new Book();
+        int first = 0;
+        int last = books.length - 1;
+        int mid = (first + last) / 2;
+        int count = 0;
+        while (first <= last) {
+
+            count++;    // allows us to count cycles
+            if (books[mid].getTitle().compareToIgnoreCase(target) < 0) {
+                first = mid + 1;
+            } else if (books[mid].getTitle().compareToIgnoreCase(target) == 0) {
+                System.out.println(target + " - Search " + target + " found at index: " + mid);
+                System.out.println("search cycle count = " + count + "\n");
+
+                if (books[mid].getAuthor().equals(author)) {
+                    System.out.println(books[mid].toStringTitle() + "\n");
+                    return books[mid].toStringTitle();
+                } else if (!books[mid].getAuthor().equals(author)) {
+                    System.out.println("This book is from another author" + "\n");
+                    return "";
+                }
+
+                // will break out of while loop
+            } else {
+                last = mid - 1;
+            }
+            mid = (first + last) / 2;
+        }
+        if (first > last) {
+            System.out.println("Search " + target + " not found!");
+        }
+        System.out.println("search cycle count = " + count + "\n");
+        return null;
+
+    } // end binarySearch
+
+    /**
+     * This method sorts array of books by title
+     *
+     * @param books - receives an array of objects Book
+     * @param author - receives an string (author) to check if the book title
+     * belongs to the author
+     */
+    public void selectionSortTitle(Book[] books, String author) {
+        Book temp = new Book();
+        for (int i = 0; i < books.length - 1; i++) {
+            int index = i;
+            for (int j = i + 1; j < books.length; j++) {
+                if (books[j].getTitle().compareTo(books[index].getTitle()) < 0) {
+                    index = j;//searching for lowest index  
+                }
+            }
+            temp = books[index];
+            books[index] = books[i];
+            books[i] = temp;
+        }
+
     }
 
 }

@@ -38,6 +38,9 @@ public class Book implements Serializable {
         this.yearPublished = yearPublished;
     }
 
+    /**
+     * Constructor
+     */
     public Book() {
         isFilled = true;
         isbn = count.incrementAndGet();
@@ -89,43 +92,39 @@ public class Book implements Serializable {
     }
 
     public String toStringIsbn() {
-        return "Book{" + ", isbn= " + isbn
-                + ", title=" + title
-                + ", author=" + author
-                + ", genre=" + genre
-                + ", yearPublished=" + yearPublished
-                + ", isFilled=" + isFilled
+        return "Book{" + " ID(Isbn): " + isbn
+                + ", title: " + title
+                + ", author: " + author
+                + ", genre: " + genre
+                + ", year of publication: " + yearPublished
                 + '}';
     }
 
     public String toStringYearPubli() {
-        return "Book{" + "yearPublished= " + yearPublished
-                + ", isbn=" + isbn
-                + ", title=" + title
-                + ", author=" + author
-                + ", genre=" + genre
-                + ", isFilled="
-                + isFilled + '}';
-    }
-    
-    public String toStringGenre() {
-        return "Book{"  + "Genre= " + genre
-                + ", isbn=" + isbn
-                + ", title=" + title
-                + ", author=" + author
-                + ", yearPublished= " + yearPublished
-                + ", isFilled="
-                + isFilled + '}';
+        return "Book{" + " Year of publication: " + yearPublished
+                + ", isbn: " + isbn
+                + ", title: " + title
+                + ", author: " + author
+                + ", genre: " + genre
+                + '}';
     }
 
-     public String toStringTitle() {
-        return "Book{"  + "Title= " + title
-                + ", isbn=" + isbn
-                + ", author=" + author
-                + ", genre=" + genre
-                + ", yearPublished= " + yearPublished
-                + ", isFilled="
-                + isFilled + '}';
+    public String toStringGenre() {
+        return "Book{" + " Genre: " + genre
+                + ", isbn: " + isbn
+                + ", title: " + title
+                + ", author: " + author
+                + ", year of publication: " + yearPublished
+                + '}';
     }
-    
+
+    public String toStringTitle() {
+        return "Book{" + " Title: " + title
+                + ", isbn: " + isbn
+                + ", author: " + author
+                + ", genre: " + genre
+                + ", year of publication: " + yearPublished
+                + '}';
+    }
+
 }

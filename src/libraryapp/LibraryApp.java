@@ -13,19 +13,17 @@ public class LibraryApp {
 
     /**
      * @param args the command line arguments
+     * @throws java.lang.Exception
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        // Instances of classes
         SetUp setup = new SetUp();
         Logic logic = new Logic();
-        setup.setBooks();
+        Menu menu = new Menu();
 
-        //  logic.bubbleSort(setup.books);//Works Bubble sort Year Published 1
-        //  logic.sort(setup.books);//QuickSort works  Genre  -----------    2
-        // setup.printBooks();// QuickSort works --------------
-        // logic.insertionSort(setup.books); // Works -------------          3
-        // setup.printBooks();// Works -----------------
-        logic.selectionSort(setup.books);// Selection ----------   title     4
-        setup.printBooks();
+        setup.setBooks();// call method to create array of books
+        menu.mainMenu(setup.books, logic, setup);// Main menu method
+
     }
 
 }
